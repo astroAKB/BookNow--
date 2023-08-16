@@ -11,7 +11,7 @@ export default function Header() {
     }
   }
   return (
-    <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
+    <div className='bg-white border-b shadow-md sticky top-0 z-50'>
         <header className='flex justify-between items-center
         px-3 max-w-6xl mx-auto'>
           <div>
@@ -21,17 +21,17 @@ export default function Header() {
             <ul className="flex space-x-10">
               <li className={`cursor-pointer py-3 text-sm font-semibold
               text-gray-400 border-b-[3px] border-b-transparent
-              ${pathMatchRoute("/") && "text-black border-b-orange-500 "}`}
+              ${pathMatchRoute("/") && "text-black font-semibold border-b-orange-500"}`}
               onClick={()=>navigate('/')}>Home</li>
 
               <li className={`cursor-pointer py-3 text-sm font-semibold
               text-gray-400 border-b-[3px] border-b-transparent
-              ${pathMatchRoute("/offers") && "text-black border-b-orange-500 "}`}
+              ${pathMatchRoute("/offers") && "text-black font-semibold border-b-orange-500"}`}
               onClick={()=>navigate('/offers')}>Offers</li>
 
               <li className={`cursor-pointer py-3 text-sm font-semibold
               text-gray-400 border-b-[3px] border-b-transparent
-              ${pathMatchRoute("/sign-in") && "text-black border-b-orange-500 "}`}
+              ${pathMatchRoute("/sign-in") && "text-black font-semibold border-b-orange-500"}`}
               onClick={()=>navigate('/sign-in')}>Sign In</li>
             </ul>
           </div>

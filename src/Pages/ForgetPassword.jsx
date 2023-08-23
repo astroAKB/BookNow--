@@ -1,12 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import OAuth from "../Components/OAuth";
+import { toast } from "react-toastify";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgetPassword() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   function onChange(event) {
-    setEmail(event.target.value)
-    };
+    setEmail(event.target.value);
+  }
+  const navigate = useNavigate();
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Email sent!");
+      navigate("/sign-in");
+    } catch (error) {
+      toast.error("Could not send reset password Email!");
+    }
+  }
   return (
     <section>
       <h1 className="text-3xl text-center mt-6 font-bold">Fogot Password</h1>
@@ -19,7 +35,7 @@ export default function ForgetPassword() {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               id="email"
@@ -28,7 +44,7 @@ export default function ForgetPassword() {
               placeholder="Enter your email address"
               className="w-full px-4 py-2 text-xl mb-6 text-blue-500 bg-white border-gray-300 rounded transition ease-in-out"
             />
-            
+
             <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg">
               <p className="mb-6">
                 Don't have an account?

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { AiTwotoneHome } from "react-icons/ai";
+import { FcHome } from "react-icons/fc";
 
 export default function Profile() {
   const auth = getAuth();
@@ -95,7 +95,7 @@ export default function Profile() {
               to="/create-listing"
               className="flex justify-center items-center"
             >
-              <AiTwotoneHome className="mr-2 text-3xl bg-white rounded-full p-1 border-2" />
+              <FcHome className="mr-2 text-3xl  bg-white rounded-full p-1 border-2" />
               Sell or rent your home
             </Link>
           </button>
